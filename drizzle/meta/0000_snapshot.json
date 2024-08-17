@@ -1,0 +1,318 @@
+{
+  "id": "7abb97d2-0bb1-46d0-ad42-aac1a2e76ab4",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.customer": {
+      "name": "customer",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phoneNumber": {
+          "name": "phoneNumber",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-07-29T17:03:13.188Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-07-29T17:03:13.188Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "customer_user_id_users_id_fk": {
+          "name": "customer_user_id_users_id_fk",
+          "tableFrom": "customer",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.measurements": {
+      "name": "measurements",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "customer_id": {
+          "name": "customer_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ShirtLength": {
+          "name": "ShirtLength",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Sleeve": {
+          "name": "Sleeve",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Thigh": {
+          "name": "Thigh",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Chest": {
+          "name": "Chest",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Hem": {
+          "name": "Hem",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Collar": {
+          "name": "Collar",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TrouserLength": {
+          "name": "TrouserLength",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PantLeg": {
+          "name": "PantLeg",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Shoulder": {
+          "name": "Shoulder",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "measurements_customer_id_customer_id_fk": {
+          "name": "measurements_customer_id_customer_id_fk",
+          "tableFrom": "measurements",
+          "tableTo": "customer",
+          "columnsFrom": [
+            "customer_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.order": {
+      "name": "order",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "customer_id": {
+          "name": "customer_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "payment": {
+          "name": "payment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "delivedDate": {
+          "name": "delivedDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-07-29T17:03:13.190Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-07-29T17:03:13.190Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "order_customer_id_customer_id_fk": {
+          "name": "order_customer_id_customer_id_fk",
+          "tableFrom": "order",
+          "tableTo": "customer",
+          "columnsFrom": [
+            "customer_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "order_user_id_users_id_fk": {
+          "name": "order_user_id_users_id_fk",
+          "tableFrom": "order",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "remember": {
+          "name": "remember",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "isactive": {
+          "name": "isactive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
+        "isverified": {
+          "name": "isverified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-07-29T17:03:13.186Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-07-29T17:03:13.187Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
