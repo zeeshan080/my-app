@@ -27,7 +27,7 @@ export default function Page (props: IPageProps) {
       <AboutHeroSection aboutdata={aboutdata}/>
       <AboutTextSection aboutText={aboutTextdata}/>
       <AboutServices serivces={servicedata}/>
-      <AboutCustomer clients={clientdata}/>
+     { /*<AboutCustomer clients={clientdata}/>*/}
       
     </section>
   );

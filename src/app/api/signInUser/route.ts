@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
     // Return user details
-    return NextResponse.json(user);
+    return NextResponse.json({user:user});
 
   } catch (error) {
     console.error("Error fetching user details:", error);
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
     try {
-      const { password ,username } = await request.json();
+      const { username ,password} = await request.json();
       
       console.log("Login attempt for:", username);
   
@@ -104,3 +104,5 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to process request" }, { status: 500 });
     }
   }
+
+ 

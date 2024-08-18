@@ -8,7 +8,9 @@ import {
   ListChecks,
   ListOrdered,
   Menu,
+  MessageCircle,
   Users,
+  Users2,
   X,
 } from "lucide-react";
 import * as React from "react";
@@ -75,6 +77,22 @@ export default function Sidebar(props: ISidebarProps) {
               className="flex gap-3 py-4 pl-6 pr-2"
               icons={<ListChecks size={22} />}
               text={"Orders"}
+              open={open}
+              setopen={setOpen}
+            />
+             <Sidebaritems
+              link={"/admin/user"}
+              className="flex gap-3 py-4 pl-6 pr-2"
+              icons={<Users2 size={22} />}
+              text={"Users"}
+              open={open}
+              setopen={setOpen}
+            />
+            <Sidebaritems
+              link={"/admin/feedback"}
+              className="flex gap-3 py-4 pl-6 pr-2"
+              icons={<MessageCircle size={22} />}
+              text={"Feedback"}
               open={open}
               setopen={setOpen}
             />

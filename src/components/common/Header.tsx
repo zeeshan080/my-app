@@ -23,8 +23,8 @@ export default function Header({}: Props) {
         <div className="flex flex-col lg:flex-row bg-white lg:items-center justify-between">
         <div className="flex items-center">
           <Link href={"/"} className='flex items-center text-[16px] lg:text-[20px]  lg:text-center relative'>
-            <Image src="/images/logo.png" alt="logo" width={140} height={20} className="" />
-                 <div className="absolute top-[29px] left-[150px]">
+            <Image src="/images/logo.png" alt="logo" width={110} height={20} className="" />
+                 <div className="absolute top-[29px] left-[120px]">
                  <h1 className={`${play.className} text-[#621940] flex gap-2`}>S.S<span
                     className={`${play.className} text-[#0b032d] `}>Tailors<span className="text-[#621940] mx-2">&</span>Garments</span>
                  </h1>

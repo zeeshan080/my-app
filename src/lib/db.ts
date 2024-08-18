@@ -30,7 +30,7 @@ export const bannerData: bannerType[] = [
       image_url: "/images/product.png",
       Productname: "Shalwar Kameez",
       catagory:"cotton" ,
-      symbol: "$",
+      symbol: "PKR",
       price: 175,
     },
     {
@@ -38,7 +38,7 @@ export const bannerData: bannerType[] = [
       image_url: "/images/product2.png",
       Productname: "Shalwar Kameez",
       catagory: "cotton",
-      symbol: "$",
+      symbol: "PKR",
       price: 173,
     },
     {
@@ -46,7 +46,7 @@ export const bannerData: bannerType[] = [
       image_url: "/images/product3.png",
       Productname: "Shalwar Kameez",
       catagory: "cotton",
-      symbol: "$",
+      symbol: "PKR",
       price: 176,
     },
     {
@@ -54,7 +54,7 @@ export const bannerData: bannerType[] = [
       image_url: "/images/product4.png",
       Productname: "Kurta Pajma",
       catagory: "cotton",
-      symbol: "$",
+      symbol: "PKR",
       price: 175,
     },
     {
@@ -62,7 +62,7 @@ export const bannerData: bannerType[] = [
       image_url: "/images/product5.png",
       Productname: "Kurta Pajma",
       catagory:"cotton" ,
-      symbol: "$",
+      symbol: "PKR",
       price: 135,
     },
   ];  
@@ -70,9 +70,9 @@ export const bannerData: bannerType[] = [
   export const about: aboutUsType[] = [
     {
       id: 1,
-      heading:"Welcome to [Your Tailoring Business Name]",
+      heading:"Welcome to S.S Tailors and Graments",
       title:"Crafting Elegance, One Stitch at a Time",
-      paragraph:"At [Your Tailoring Business Name], we believe in the power of bespoke tailoring to transform not just wardrobes, but lives. Our skilled artisans are dedicated to creating custom garments that reflect your unique style and personality. From the finest fabrics to the perfect fit, we ensure every detail is meticulously crafted to perfection. Discover the art of personalized fashion with us",
+      paragraph:"At S.S Tailors and Graments, we believe in the power of bespoke tailoring to transform not just wardrobes, but lives. Our skilled artisans are dedicated to creating custom garments that reflect your unique style and personality. From the finest fabrics to the perfect fit, we ensure every detail is meticulously crafted to perfection. Discover the art of personalized fashion with us",
       image_url: "/images/about.png",
       
       
@@ -145,7 +145,7 @@ export const bannerData: bannerType[] = [
       id: 1,
       heading:"Get in Touch with Us!",
       image_url:"/images/contact2.png",
-      paragraph:"We would love to hear from you! Whether you have a question about our services, need assistance with an order, or just want to share your thoughts, we are here to help. At [Your Tailor House], customer satisfaction is our top priority "
+      paragraph:"We would love to hear from you! Whether you have a question about our services, need assistance with an order, or just want to share your thoughts, we are here to help. At S.S Tailors and Graments, customer satisfaction is our top priority "
     },
    
   ]; 

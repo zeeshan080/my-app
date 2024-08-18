@@ -29,17 +29,17 @@ export default function Hero({ bannerdata }: Props) {
                     {bannerdata.map((bannerdatas) => {
                         return (
                             <CarouselItem key={bannerdatas.id}>
-                                <section className={`${poppins.className} text-white lg:h-screen flex lg:justify-evenly px-6  gap-10 lg:px-0`}>
-                                    <div className="mt-0 py-6 lg:mt-24 lg:w-[50%] lg:px-12 lg:py-0"  >
+                                <section className={`${poppins.className} text-white lg:h-screen flex  lg:justify-evenly px-6  gap-10 md:px-0 lg:px-0`}>
+                                    <div className="mt-0 py-6 lg:mt-24 lg:w-[50%] md:px-12 lg:py-0"  >
                                         <h1 className={`text-[54px]  font-extrabold`}>{bannerdatas.heading}</h1>
                                         <p>{bannerdatas.paragraph}</p>
-                                        <Link href={"/aboutUs"} className={`flex items-center justify-center w-[80%] md:w-[30%] mt-5 text-gray-50 bg-slate-950 py-3 `}>
+                                        <Link href={"/aboutUs"} className={`flex items-center justify-center w-[80%] md:w-[30%] lg:w-[30%]   mt-5 text-gray-50 bg-slate-950 py-3  `}>
                                             <span>{bannerdatas.button}</span>
                                         </Link>
                                     </div>
                                     <div className="md:flex hidden">
                                         <Image
-                                            className="w-[100%] h-[80vh]"
+                                            className="w-[100%]  lg:h-[80vh] lg:[80%]"
                                             src={bannerdatas.image_url}
                                             alt={""}
                                             width={500}

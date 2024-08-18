@@ -87,20 +87,33 @@ export const orderSchema = z.object({
 });
 export type orderFormType = z.infer<typeof orderSchema>
 
+export const userSchema = z.object({
+    password: z.string(),
+    username: z.string(),
+    confirmpassword: z.string(),
+});
+export type userFormType = z.infer<typeof userSchema>
+
 
 export const customerSchema = z.object({
+    codeId:z.string().optional(),
     name: z.string(),
     phoneNumber:z.string(),
     ShirtLength:z.string(),
     Sleeve:z.string(),
     Thigh:z.string(),
     Chest:z.string(),
-    Hem:z.string(),
-    Collar: z.string(),
+    HemLength:z.string(),
+    HemType:z.string(),
+    CollarLength: z.string(),
+    CollarType: z.string(),
     TrouserLength: z.string(),
     PantLeg:z.string(),
     Shoulder:z.string(),
-    AdditionalNotes:z.string()
+    PocketSide: z.string().optional().default("0"),
+    PockectFront: z.string().optional().default("0"),
+    PocketTrouser: z.string().optional().default("0"),
+    AdditionalNotes: z.string().optional().default(""),
 });
 
 export type CustomerFormType = z.infer<typeof customerSchema>;

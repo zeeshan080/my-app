@@ -26,40 +26,33 @@ import React from "react";
 import Sidebaritems from "../Sidebaritems";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import { CustomerFormType } from "@/lib/type";
-import UpdateCustomer from "../models/UpdateCustomer";
+import { userFormType } from "@/lib/type";
+import UpdateUser from "../models/UpdateUser";
 
-
-type UpdateCustomerProps = {
-    open: boolean;
-    setOpen: (open: boolean) => void;
-    initialData: CustomerFormType & { id: string }; 
-    onUpdate: (id: string, data: CustomerFormType) => void;
-};
-interface CustomerRowData extends CustomerFormType {
+interface UserRowData extends userFormType {
     id: string;
-    customerId?: string;
-}  
+  } 
 type Props<TData, TValue> = {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
-    onDelete: (id:string, customerId: string) => void; 
-    onUpdate: (id: string, data: CustomerFormType) => void; // Add this line
+    onDelete: (id: string) => void; 
+    onUpdate: (id: string, data: userFormType) => void; // Add this line
 
 };
 
-export default function CustomerDataTable<TData, TValue>({
+export default function UserDataTable<TData, TValue>({
     columns,
     data,
     onDelete,
     onUpdate
+    
 }: Props<TData, TValue>) {
     const [viewDialogOpen, setViewDialogOpen] = useState(false);
-    const [viewData, setViewData] = useState<CustomerFormType & { id: string } | null>(null);
+    const [viewData, setViewData] = useState<userFormType & { id: string } | null>(null);
     const [editDialogOpen, setEditDialogOpen] = useState(false);
-    const [editData, setEditData] = useState<CustomerFormType & { id: string } | null>(null);
+    const [editData, setEditData] = useState<userFormType & { id: string } | null>(null);
     const [sorting, setSorting] = React.useState<SortingState>([])
-    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([] )
     const [pagination, setPagination] = useState({
         pageIndex: 0, //initial page index
         pageSize: 10, //default page size
@@ -82,39 +75,34 @@ export default function CustomerDataTable<TData, TValue>({
         onColumnFiltersChange: setColumnFilters,
         onGlobalFilterChange: setGlobalFilter, 
     })
-
-    const handleDelete = async (id: string, customerId: string) => {
+    const handleDelete = async (id: string) => {
         try {
-            await onDelete(id, customerId);
-            console.log(id,customerId)
-            // Optionally update the table data if needed
+            await onDelete(id);
         } catch (error) {
-            console.error('Failed to delete customer:', error);
+            console.error('Failed to delete user:', error);
         }
     };
-    const handleEdit = (id: string, customerData: CustomerFormType) => {
-        setEditData({ id, ...customerData });
+    const handleEdit = (id: string, orderData: userFormType) => {
+        setEditData({ id, ...orderData });
         setEditDialogOpen(true);
     };
       
-      const handleUpdate = async (id: string, customerData: CustomerFormType) => {
+      const handleUpdate = async (id: string, userData: userFormType) => {
         try {
-          await onUpdate(id, customerData);
+          await onUpdate(id, userData);
           setEditDialogOpen(false);
         } catch (error) {
           console.error('Failed to update data:', error);
         }
       };
-
-      const handleView = (id: string, customerData: CustomerFormType) => {
-        setViewData({ id, ...customerData });
+      const handleView = (id: string, userData: userFormType) => {
+        setViewData({ id, ...userData });
         setViewDialogOpen(true);
     };
    
 
-
     return (
-        <div className="rounded-md border mt-16   shadow-lg bg-transparent  backdrop-blur-lg ">
+        <div className="rounded-md border mt-16 shadow-lg bg-transparent  backdrop-blur-lg ">
             <div className="w-full">
                 <div className="flex flex-col gap-4 md:flex-row justify-between items-center  p-4">
                     <div className="relative">
@@ -128,10 +116,10 @@ export default function CustomerDataTable<TData, TValue>({
                     </div>
                     <div className="flex flex-col md:flex-row gap-5">
                         <div className="flex relative items-center">
-                        <Sidebaritems
-                                link={"/admin/customer/create-customer"}
+                            <Sidebaritems
+                                link={"/admin/user/create-user"}
                                 className="bg-[#621940] text-[white] rounded-md text-[14px] py-3 px-7 ml-3"
-                                text="Add New Customer"
+                                text="Add New user"
                                 icons={<PlusCircle className="absolute top-2 lg:top-1/4 bottom-0  ml-4" color="white" size={20} />
                                 }
                             />
@@ -198,51 +186,45 @@ export default function CustomerDataTable<TData, TValue>({
                                     <TableCell key={cell.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
-                                    
                                 ))}
-                                   <TableCell>
-                                   <div className="flex gap-2 items-center">
+                                  <TableCell>
+                                   <div className="flex gap-2 items-end justify-end mr-3">
                                    <Eye size={20} onClick={() => {
-                                            const { id, ...rest } = row.original as CustomerRowData;
+                                            const { id, ...rest } = row.original as UserRowData;
                                             handleView(id, rest);
                                         }} />
                                     <PencilLine
                                         size={20}
                                         onClick={() => {
-                                            const { id, ...rest } = row.original as CustomerRowData; // Destructure to get id and rest of the data
-                                            handleEdit(id, rest); // Pass id and the rest of the data
+                                            const { id, ...rest } = row.original as UserRowData; 
+                                            handleEdit(id, rest); 
                                         }}
                                         />
-                                        <Trash2
-                                            size={20}
-                                            onClick={() => handleDelete(
-                                                (row.original as { id: string }).id,
-                                                (row.original as { customerId: string }).customerId
-                                            )}
+                                   <Trash2
+                                    size={20}
+                                    onClick={() => handleDelete((row.original as { id: string }).id)}
                                         />
-                                    </div>
+                                     </div>
                                     </TableCell>
-                                    {/* Edit Dialog */}
-                                        {editData && (
-                                        <UpdateCustomer
-                                        open={editDialogOpen}
-                                        setOpen={setEditDialogOpen}
-                                        initialData={editData}
-                                        onUpdate={handleUpdate} 
-                                        mode="edit"
-                                        />
+                                      {editData && (
+                                            <UpdateUser
+                                            open={editDialogOpen}
+                                            setOpen={setEditDialogOpen}
+                                            initialData={editData}
+                                            onUpdate={handleUpdate}
+                                            mode="edit"
+                                            />
                                         )}
-                                        {viewData && (
-                                            <UpdateCustomer
+                                          {viewData && (
+                                            <UpdateUser
                                                 open={viewDialogOpen}
                                                 setOpen={setViewDialogOpen}
                                                 initialData={viewData}
-                                                onUpdate={() => {}} // No update function needed in view mode
-                                                mode="view" // Pass view mode
+                                                onUpdate={() => {}}
+                                                mode="view"
                                             />
                                             )}
                             </TableRow>
-                            
                         ))
                     ) : (
                         <TableRow>
@@ -251,9 +233,6 @@ export default function CustomerDataTable<TData, TValue>({
                             </TableCell>
                         </TableRow>
                     )}
-                    <TableRow>
-                          
-                        </TableRow>
                 </TableBody>
             </Table>
             <div className="flex flex-col gap-7 md:gap-0  md:flex-row items-center justify-between space-x-2 py-4 px-5">

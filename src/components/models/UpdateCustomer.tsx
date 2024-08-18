@@ -89,8 +89,8 @@ export default function UpdateCustomer({
           />
             <Label>Hem (گھیر)</Label>
             <Input
-            value={formData.Hem}
-            onChange={(e) => setFormData({ ...formData, Hem: e.target.value })}
+            value={formData.HemLength}
+            onChange={(e) => setFormData({ ...formData, HemLength: e.target.value })}
             className='my-3'
             readOnly={mode === 'view'} // Set readOnly based on mode
           />
@@ -126,12 +126,12 @@ export default function UpdateCustomer({
           />
            <Label>Collar(کالر)</Label>
            <Input
-            value={formData.Collar}
-            onChange={(e) => setFormData({ ...formData, Collar : e.target.value })}
+            value={formData.CollarLength}
+            onChange={(e) => setFormData({ ...formData, CollarLength : e.target.value })}
             className='my-3'
             readOnly={mode === 'view'} // Set readOnly based on mode
           />
-            </div>
+          </div>
           
         </div>
         <Label>Additional Notes(اضافی نوٹس)</Label>

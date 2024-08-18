@@ -24,8 +24,8 @@ export default function Footer() {
                 <div className="md:col-span-2">
                 <div className="flex items-center">
           <Link href={"/"} className='flex items-center relative text-[16px]  mt-3 lg:text-[20px]  lg:text-center lg:m-0 '>
-            <Image src="/images/logo.png" alt="logo" width={140} height={20} className="" />
-                 <div className="absolute top-[29px] left-[140px] text-[#c9c1ec] ">
+            <Image src="/images/logo.png" alt="logo" width={110} height={20} className="" />
+                 <div className="absolute top-[29px] left-[120px] text-[#c9c1ec] ">
                  <h1 className={`${play.className}   flex lg:gap-2`}>S.S<span
                     className={`${play.className}  `}>Tailors<span className="mx-2">&</span>Garments</span>
                  </h1>

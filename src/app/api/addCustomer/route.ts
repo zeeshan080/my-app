@@ -4,6 +4,8 @@ import { mySchemaCustomer, mySchemaMeasurements } from "../../../../drizzle/sche
 import { database } from "../../../../drizzle/database";
 import { and, eq } from "drizzle-orm";
 
+   
+
 
 export async function GET(request:NextRequest) {
     const userId = JSON.parse(request.headers.get("userId") as string);
@@ -29,9 +31,14 @@ export async function GET(request:NextRequest) {
     }
 }
 
+
+
 export async function POST(request: NextRequest) {
     const userId = JSON.parse(request.headers.get("userId") as string);
     console.log("userId from API route:", userId);
+
+    let newCustomer; // Declare newCustomer outside the try block
+
     try {
         // Parse the request body
         const {
@@ -41,24 +48,40 @@ export async function POST(request: NextRequest) {
             Sleeve,
             Thigh,
             Chest,
-            Hem,
-            Collar,
+            HemLength,
+            HemType,
+            CollarLength,
+            CollarType,
             TrouserLength,
             PantLeg,
             Shoulder,
+            PocketSide,
+            PockectFront,
+            PocketTrouser,
             AdditionalNotes
         } = await request.json();
+
         // Insert customer data
-        const [newCustomer] = await database
+        [newCustomer] = await database
             .insert(mySchemaCustomer)
             .values({
                 name,
                 phoneNumber,
-                userId:userId,
+                userId,
                 createdat: new Date().toISOString(),
-                updatedat: new Date().toISOString()
+                updatedat: new Date().toISOString(),
             })
             .returning(); // Return the inserted customer
+
+        // Generate codeId based on the new customer's id
+        const nextCodeId = String(newCustomer.id).padStart(4, '0');
+        console.log(nextCodeId);
+
+        // Update the customer record with the generated codeId
+        await database
+            .update(mySchemaCustomer)
+            .set({ codeId: nextCodeId })
+            .where(eq(mySchemaCustomer.id, newCustomer.id));
 
         // Prepare measurements data
         const measurements = {
@@ -67,11 +90,16 @@ export async function POST(request: NextRequest) {
             Sleeve,
             Thigh,
             Chest,
-            Hem,
-            Collar,
+            HemLength,
+            HemType,
+            CollarLength,
+            CollarType,
             TrouserLength,
             PantLeg,
             Shoulder,
+            PocketSide,
+            PockectFront,
+            PocketTrouser,
             AdditionalNotes
         };
 
@@ -83,14 +111,28 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({
             message: "Customer and measurements added successfully",
-            customer: newCustomer,
-            measurement: newMeasurement
+            customer: { ...newCustomer, codeId: nextCodeId },
+            measurement: newMeasurement,
         });
     } catch (error) {
         console.error('Error adding customer and measurements:', error);
+
+        // If any error occurs, delete the customer to simulate a rollback
+        if (newCustomer && newCustomer.id) {
+            try {
+                await database
+                    .delete(mySchemaCustomer)
+                    .where(eq(mySchemaCustomer.id, newCustomer.id));
+                console.log(`Rolled back customer creation for customerId: ${newCustomer.id}`);
+            } catch (rollbackError) {
+                console.error('Error rolling back customer creation:', rollbackError);
+            }
+        }
+
         return NextResponse.json({ error: 'Failed to add customer and measurements' }, { status: 500 });
     }
 }
+
 
 
 export async function PUT(request: NextRequest) {
@@ -108,27 +150,37 @@ export async function PUT(request: NextRequest) {
             Sleeve,
             Thigh,
             Chest,
-            Hem,
-            Collar,
+            HemLength,
+            HemType,
+            CollarLength,
+            CollarType,
             TrouserLength,
             PantLeg,
             Shoulder,
+            PocketSide,
+            PockectFront,
+            PocketTrouser,
             AdditionalNotes
         } = await request.json();
         console.log(
           " measurementid------ ",id,
            " customerId-----",customerId,
-            name,
+           name,
             phoneNumber,
             ShirtLength,
             Sleeve,
             Thigh,
             Chest,
-            Hem,
-            Collar,
+            HemLength,
+            HemType,
+            CollarLength,
+            CollarType,
             TrouserLength,
             PantLeg,
             Shoulder,
+            PocketSide,
+            PockectFront,
+            PocketTrouser,
             AdditionalNotes
 
         )
@@ -158,11 +210,16 @@ export async function PUT(request: NextRequest) {
                 Sleeve,
                 Thigh,
                 Chest,
-                Hem,
-                Collar,
+                HemLength,
+                HemType,
+                CollarLength,
+                CollarType,
                 TrouserLength,
                 PantLeg,
                 Shoulder,
+                PocketSide,
+                PockectFront,
+                PocketTrouser,
                 AdditionalNotes
             })
             .where(

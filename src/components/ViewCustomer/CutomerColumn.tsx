@@ -8,7 +8,16 @@ type Props = {
 
 
 export const customerColumns: ColumnDef<CustomerFormType>[] = [
-    
+    {
+        accessorKey: "codeId",
+        header: () => <div className="text-[#A2A1A8]/80">Code Id</div>,
+        cell: ({ row }) => {
+            return (
+                <div>{row.getValue("codeId")}</div>
+            )
+        }
+        
+    },
     {
         accessorKey: "name",
         header: () => <div className="text-[#A2A1A8]/80">Customer Name(نام)</div>,

@@ -24,9 +24,34 @@ export default function Contact ({contactbannner}:Props) {
     const form = useForm<contactType>({
         resolver: zodResolver(contactSchema),
     });
+
+    const addContact = async (data: contactType) => {
+        try {
+            const response = await fetch("/api/Contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json",
+                 },
+                body: JSON.stringify(data),
+            });
+    
+            if (!response.ok) {
+                // Check if the response is not successful
+                console.error("Failed to add contact:", response.status, response.statusText);
+                alert("Failed to add contact. Please try again.");
+                return;
+            }
+    
+            const { message,contact} = await response.json();
+            console.log("Result:", message,contact);
+            // Handle successful response, e.g., update the UI
+        } catch (error) {
+            console.error("Error during contact addition:", error);
+            alert("An error occurred during contact addition. Please try again.");
+        }
+    };
     const OnSubmit = (data: contactType) => {
         console.log(data);
-        alert("message send succesfully");
+        addContact(data)
     };
   return (
     <section className={`${poppins.className} `}>

@@ -33,6 +33,7 @@ export function mergeCustomerAndMeasurementData(customers: any[], measurements: 
     const customer = customers.find(cust => cust.id === measurement.customerId);
     return {
       ...measurement,
+      codeId: customer ? customer.codeId : 'Unknown',
       name: customer ? customer.name : 'Unknown',
       phoneNumber: customer ? customer.phoneNumber : 'Unknown',
     };
