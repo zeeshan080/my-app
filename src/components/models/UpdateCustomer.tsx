@@ -6,6 +6,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger,  SelectValue } from '../ui/select';
 
 
 type UpdateCustomerProps = {
@@ -52,6 +53,13 @@ export default function UpdateCustomer({
      <div>
       <div className="grid md:grid-cols-2 gap-4">
             <div>
+            <Label>CodeId (کوڈ آئی ڈی)</Label>
+            <Input
+            value={formData.codeId}
+            onChange={(e) => setFormData({ ...formData, codeId: e.target.value })}
+            className='my-3'
+            readOnly={mode === 'view'} // Set readOnly based on mode
+          />
             <Label>Customer Name(نام)</Label>
             <Input
             value={formData.name}
@@ -94,6 +102,41 @@ export default function UpdateCustomer({
             className='my-3'
             readOnly={mode === 'view'} // Set readOnly based on mode
           />
+           <Label>Hem Type(گھیر کی قسم)</Label>
+              <Select
+                value={formData.HemType}
+                onValueChange={(value) => setFormData({ ...formData, HemType: value })}
+                disabled={mode === 'view'}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Circle">Circle(گول گھیر)</SelectItem>
+                  <SelectItem value="Square">Square(چوراس گھیر)</SelectItem>
+                </SelectContent>
+              </Select>
+            <Label>Shirt Side Pocket(قمیض سائیڈ کی جیب)</Label>
+            <Input
+            value={formData.PocketSide}
+            onChange={(e) => setFormData({ ...formData, PocketSide: e.target.value })}
+            className='my-3'
+            readOnly={mode === 'view'} // Set readOnly based on mode
+          />
+           <Label>Shirt Front Pocket(قمیض سائیڈ کی جیب)</Label>
+            <Input
+            value={formData.PockectFront}
+            onChange={(e) => setFormData({ ...formData, PockectFront: e.target.value })}
+            className='my-3'
+            readOnly={mode === 'view'} // Set readOnly based on mode
+          />
+           <Label>Trouser Pocket(شلوار کی جیب)</Label>
+            <Input
+            value={formData.PocketTrouser}
+            onChange={(e) => setFormData({ ...formData, PocketTrouser: e.target.value })}
+            className='my-3'
+            readOnly={mode === 'view'} // Set readOnly based on mode
+          />
             </div>
             <div>
             <Label>Trouser Length (شلوار کی لمبائی)</Label>
@@ -131,6 +174,20 @@ export default function UpdateCustomer({
             className='my-3'
             readOnly={mode === 'view'} // Set readOnly based on mode
           />
+              <Label>Collar Type(کالر کی قسم)</Label>
+              <Select
+                value={formData.CollarType}
+                onValueChange={(value) => setFormData({ ...formData, CollarType: value })}
+                disabled={mode === 'view'}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Ban">Ban Collar(بان کالر)</SelectItem>
+                  <SelectItem value="Simple">Simple Collar(سادہ کالر)</SelectItem>
+                </SelectContent>
+              </Select>
           </div>
           
         </div>

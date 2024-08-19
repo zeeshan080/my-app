@@ -116,7 +116,6 @@ export async function POST(request: NextRequest) {
         });
     } catch (error) {
         console.error('Error adding customer and measurements:', error);
-
         // If any error occurs, delete the customer to simulate a rollback
         if (newCustomer && newCustomer.id) {
             try {
