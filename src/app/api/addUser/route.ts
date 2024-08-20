@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     )
     console.log("User add in successfully:", users);
   
-    return NextResponse.json({ message: "User logged in successfully", user: users});
+    return NextResponse.json({ message: "User added successfully", user: users});
   }
 
 

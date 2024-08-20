@@ -1,0 +1,407 @@
+{
+  "id": "494aa352-d19b-468e-9c98-a9652fae4c64",
+  "prevId": "7abb97d2-0bb1-46d0-ad42-aac1a2e76ab4",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.contact": {
+      "name": "contact",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "subject": {
+          "name": "subject",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.241Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.241Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.customer": {
+      "name": "customer",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "codeId": {
+          "name": "codeId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phoneNumber": {
+          "name": "phoneNumber",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.235Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.235Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "customer_user_id_users_id_fk": {
+          "name": "customer_user_id_users_id_fk",
+          "tableFrom": "customer",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.measurements": {
+      "name": "measurements",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "customer_id": {
+          "name": "customer_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ShirtLength": {
+          "name": "ShirtLength",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Sleeve": {
+          "name": "Sleeve",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Thigh": {
+          "name": "Thigh",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Chest": {
+          "name": "Chest",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HemLength": {
+          "name": "HemLength",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HemType": {
+          "name": "HemType",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CollarLength": {
+          "name": "CollarLength",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CollarType": {
+          "name": "CollarType",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TrouserLength": {
+          "name": "TrouserLength",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PantLeg": {
+          "name": "PantLeg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Shoulder": {
+          "name": "Shoulder",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PocketSide": {
+          "name": "PocketSide",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PockectFront": {
+          "name": "PockectFront",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PocketTrouser": {
+          "name": "PocketTrouser",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AdditionalNotes": {
+          "name": "AdditionalNotes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "measurements_customer_id_customer_id_fk": {
+          "name": "measurements_customer_id_customer_id_fk",
+          "tableFrom": "measurements",
+          "tableTo": "customer",
+          "columnsFrom": [
+            "customer_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.order": {
+      "name": "order",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "customer_id": {
+          "name": "customer_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "payment": {
+          "name": "payment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "delivedDate": {
+          "name": "delivedDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.240Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.240Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "order_customer_id_customer_id_fk": {
+          "name": "order_customer_id_customer_id_fk",
+          "tableFrom": "order",
+          "tableTo": "customer",
+          "columnsFrom": [
+            "customer_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "order_user_id_users_id_fk": {
+          "name": "order_user_id_users_id_fk",
+          "tableFrom": "order",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isactive": {
+          "name": "isactive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
+        "isverified": {
+          "name": "isverified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "createdat": {
+          "name": "createdat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.230Z'"
+        },
+        "updatedat": {
+          "name": "updatedat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'2024-08-19T10:55:41.231Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

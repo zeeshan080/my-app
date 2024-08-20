@@ -37,12 +37,11 @@ export default function Page (props: IPageProps) {
         if (!response.ok) {
           throw new Error('Failed to fetch user');
         }
-        const users = await response.json(); // This is an array of users
-        console.log("user----->", users);
-  
+        const {user} = await response.json(); // This is an array of users
+        console.log("user----->", user);
         // Ensure that there is at least one user in the array
-        if (users.length > 0) {
-          setUserName(users[0].username); // Access the first user
+        if (user && Array.isArray(user) && user.length > 0) {
+          setUserName(user[0].username); // Access the first user
         } else {
           console.warn('No user found');
         }
@@ -61,7 +60,7 @@ export default function Page (props: IPageProps) {
     <main className=" w-[95%] m-auto mt-8">
      <div className='flex  items-center justify-between'>
      <div>
-        <h1 >Hello Admin</h1>
+        <h1 >Hello  {loading ? "Loading..." : userName || "UserName"} </h1>
       </div>
        <div className='flex p-2'>
         <Select onValueChange={(value) => {

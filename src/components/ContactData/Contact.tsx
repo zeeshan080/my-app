@@ -117,17 +117,17 @@ export default function Contact ({contactbannner}:Props) {
                   <Contactitems
                         heading1='Follow Us'
                         paragraph1='Stay updated with our latest designs and offers by following us on social media:'
-                        icon={<Facebook />}
+                        icon={<Facebook  />}
                         heading="Facebook: "
                         paragraph="Your Tailor House Facebook"
                     />
                     <Contactitems
-                        icon={<Instagram />}
+                        icon={<Instagram  />}
                         heading="Instagram:"
                         paragraph="@yourtailorhouse"
                     />
                     <Contactitems
-                        icon={<Twitter />}
+                        icon={<Twitter  />}
                         heading="Twitter:"
                         paragraph="@yourtailorhouse"
                     />

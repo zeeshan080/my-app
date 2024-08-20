@@ -170,7 +170,7 @@ export default function UserDataTable<TData, TValue>({
                                 );
                             })}
                              <TableHead>
-                                <h1 className="text-[#A2A1A8]/80 text-center">Action</h1>
+                                <h1 className="text-[#A2A1A8]/80 text-left">Action</h1>
                             </TableHead>
                         </TableRow>
                     ))}
@@ -188,7 +188,7 @@ export default function UserDataTable<TData, TValue>({
                                     </TableCell>
                                 ))}
                                   <TableCell>
-                                   <div className="flex gap-2 items-end justify-end mr-3">
+                                   <div className="flex gap-2 items-center mr-3">
                                    <Eye size={20} onClick={() => {
                                             const { id, ...rest } = row.original as UserRowData;
                                             handleView(id, rest);

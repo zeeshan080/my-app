@@ -23,32 +23,34 @@ export default function UserForm (props: IUserFormProps) {
         resolver:zodResolver(userSchema),
     });
     const addUser = async (data: userFormType) => {
-        if (data.password == data.confirmpassword) {
-        try {
-          const res = await fetch("/api/addUser", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" }, // Include headers to indicate JSON payload
-            body: JSON.stringify(data),
-
-          });
-      
-          if (res.ok) {
-            // Response is successful, proceed with redirection
-            const response = await res.json(); // Parse the response body
-            console.log(response);
-            alert(response.message); // Show any message from the server (optional)
-          } else {
-            // Response is not successful, handle the error
-            console.error("Failed to add user:", res.status, res.statusText);
-            alert("Failed to add user. Please check your credentials.");
+      if (data.password === data.confirmpassword) {
+          try {
+              const res = await fetch("/api/addUser", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" }, // Include headers to indicate JSON payload
+                  body: JSON.stringify(data),
+              });
+  
+              if (res.ok) {
+                  // Response is successful, proceed with redirection
+                  const response = await res.json(); // Parse the response body
+                  console.log(response);
+                  alert(response.message); // Show any message from the server (optional)
+              } else {
+                  // Response is not successful, handle the error
+                  console.error("Failed to add user:", res.status, res.statusText);
+                  alert("Failed to add user. Please check your credentials.");
+              }
+          } catch (error) {
+              // Handle any errors that occurred during fetch
+              console.error("Error during add user:", error);
+              alert("An error occurred during add user. Please try again.");
           }
-        } catch (error) {
-          // Handle any errors that occurred during fetch
-          console.error("Error during add user:", error);
-          alert("An error occurred during add user. Please try again.");
-        }
-      };
-    }
+      } else {
+          // If passwords do not match, show an alert
+          alert("Password and confirm password do not match. Please try again.");
+      }
+  };
       
     const OnSubmit = (data: userFormType) => {
         

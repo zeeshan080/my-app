@@ -14,7 +14,7 @@ export default function AboutServices ({serivces}:Props) {
      <div className=' text-center mt-24'>
            <h1 className='font-bold text-[42px]'>Why use our service?</h1>
             <p className='  text-[14px] m-auto md:w-[50%] md:text-[16px]'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.
+            Our expert craftsmen ensure precision in every stitch, offering personalized designs, quality fabrics, and a perfect fit.
             </p>
      </div>
      <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-10 my-24 w-[90%] m-auto'>

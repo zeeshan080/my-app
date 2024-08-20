@@ -221,8 +221,8 @@ export default function CustomerForm (props: ICustomerFormProps) {
                             </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                            <SelectItem value="Ban">Ban Collar(بان کالر)</SelectItem>
-                            <SelectItem value="colllar">Simple Collar(سادہ کالر)</SelectItem>
+                            <SelectItem value="BanCollar">Ban Collar(بان کالر)</SelectItem>
+                            <SelectItem value="SimpleCollar">Simple Collar(سادہ کالر)</SelectItem>
                             </SelectContent>
                         </Select>
                         <FormMessage />

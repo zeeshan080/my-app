@@ -39,9 +39,9 @@ export const mySchemaMeasurements = pgTable("measurements", {
     Thigh: doublePrecision("Thigh"),
     Chest: doublePrecision("Chest"),
     HemLength: doublePrecision("HemLength"),
-    HemType:doublePrecision("HemType"),
+    HemType:text("HemType"),
     CollarLength: doublePrecision("CollarLength"),
-    CollarType:doublePrecision("CollarType"),
+    CollarType:text("CollarType"),
     TrouserLength: doublePrecision("TrouserLength"),
     PantLeg: doublePrecision("PantLeg"),
     Shoulder: doublePrecision("Shoulder"),
@@ -54,7 +54,7 @@ export const mySchemaMeasurements = pgTable("measurements", {
 
 
 
-export const mySchemaOrder = pgTable("order", {
+export const mySchemaOrder = pgTable("orders", {
     id: serial("id").primaryKey(),
     customerId: integer("customer_id").references(() => mySchemaCustomer.id),
     payment: integer("payment"),

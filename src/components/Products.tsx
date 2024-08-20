@@ -13,7 +13,7 @@ export default function Product({ products }: Props) {
         <section className='w-[90%] mt-16 m-auto'>
             <div className='mb-14'>
                 <h1 className='text-[42px] font-semibold text-center'>New Arrivals</h1>
-                <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p className='text-center'>Discover the latest trends tailored to perfection, just for you.</p>
             </div>
             <div className='md:grid-cols-3 lg:grid-cols-4 grid-cols-1 grid gap-5'>
                 {products.map((product) => (

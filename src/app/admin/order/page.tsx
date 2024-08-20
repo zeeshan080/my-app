@@ -66,20 +66,21 @@ export default function Page(props: IPageProps) {
             throw new Error('Failed to update order');
         }
 
-        const {order} = await response.json();
+        const { order } = await response.json();
         console.log("order------------>", order);
 
-        if (order) {
+        if (order && Array.isArray(order) && order.length > 0) {
             setOrder(prevData =>
-                prevData.map(item => (item.id === id ? order : item))
+                prevData.map(item => (item.id === id ? order[0] : item)) 
             );
         } else {
-            console.error("No order returned in response");
+            console.error("No valid order returned in response");
         }
     } catch (error) {
         console.error('Failed to update order:', error);
     }
 };
+
   useEffect(() => {
     async function getOrders() {
       try {

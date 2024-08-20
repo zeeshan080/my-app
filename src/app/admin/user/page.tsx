@@ -66,13 +66,13 @@ export default function Page (props: IPageProps) {
         const {user} = await response.json();
         console.log("user------------>", user);
 
-        if (user) {
-            setUser(prevData =>
-                prevData.map(item => (item.id === id ? user : item))
-            );
-        } else {
-            console.error("No user returned in response");
-        }
+        if (user && Array.isArray(user) && user.length > 0) {
+          setUser(prevData =>
+              prevData.map(item => (item.id === id ? user[0] : item)) 
+          );
+      } else {
+          console.error("No valid user returned in response");
+      }
     } catch (error) {
         console.error('Failed to update user:', error);
     }

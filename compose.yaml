@@ -1,0 +1,22 @@
+version: "3.9"
+
+name: tailorapi
+
+services:
+  postgres_db:
+    image: postgres:latest  
+    restart: always
+    container_name: tailorappContainer
+    environment:
+        - POSTGRES_USER=hassan
+        - POSTGRES_PASSWORD=123
+        - POSTGRES_DB=tailorappDB
+    ports:
+        - '5434:5432'
+    volumes:
+        - postgres_db:/var/lib/postgresql/data
+
+volumes:
+  postgres_db:
+    driver: local
+

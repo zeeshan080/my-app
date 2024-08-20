@@ -83,14 +83,15 @@ export const bannerData: bannerType[] = [
 
   export const abouttext: aboutUsTextType[] = [
     {
-      id: 1,
-      heading:"About our tailor house",
-      text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis repellat eos libero illum en",
-      paragraph:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
-      image_url:"/images/about2.png",
-      link:"More About "
+        id: 1,
+        heading: "About Our Tailor House",
+        text: "With decades of experience, we specialize in crafting bespoke garments that fit you perfectly. Our dedication to quality and precision sets us apart.",
+        paragraph: "At our tailor house, every stitch is a promise of excellence. We combine traditional craftsmanship with modern techniques to deliver garments that are both timeless and trendy.",
+        image_url: "/images/about2.png",
+        link: "More About"
     },
-  ]; 
+];
+ 
 
   export const client: clientType[] = [
     {
@@ -115,30 +116,32 @@ export const bannerData: bannerType[] = [
 
   export const services: serviceType[] = [
     {
-      id: 1,
-      heading:"Tailor Sweing",
-      image:"/images/service1.png",
-      paragraph:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum cupiditate earum soluta, sed suscipit enim vitae quaerat pariatur "
+        id: 1,
+        heading: "Custom Suits",
+        image: "/images/service1.png",
+        paragraph: "Get a perfect fit with our custom suit tailoring, designed to your exact measurements and style preferences."
     },
     {
-      id: 2,
-      heading:"Tailor Sweing",
-      image:"/images/service2.png",
-      paragraph:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum cupiditate earum soluta, sed suscipit enim vitae quaerat pariatur"
+        id: 2,
+        heading: "Expert Alterations",
+        image: "/images/service2.png",
+        paragraph: "Expert alterations and repairs to ensure your garments fit like new, every time."
     },
     {
-      id: 3,
-      heading:"Tailor Sweing",
-      image:"/images/service3.png",
-      paragraph:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum cupiditate earum soluta, sed suscipit enim vitae quaerat pariatur"
+        id: 3,
+        heading: "Wedding Attire",
+        image: "/images/service3.png",
+        paragraph: "Tailored wedding attire that adds elegance to your special day, from suits to gowns."
     },
     {
-      id: 4,
-      heading:"Tailor Sweing",
-      image:"/images/service4.png",
-      paragraph:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum cupiditate earum soluta, sed suscipit enim vitae quaerat pariatur"
+        id: 4,
+        heading: "Casual Tailoring",
+        image: "/images/service4.png",
+        paragraph: "Personalized tailoring for your everyday wear, combining comfort with style."
     },
-  ]; 
+];
+
+
 
   export const contactUs: ContactUsType[] = [
     {

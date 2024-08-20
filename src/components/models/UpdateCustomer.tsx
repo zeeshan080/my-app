@@ -7,6 +7,7 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger,  SelectValue } from '../ui/select';
+import CustomerForm from '../CustomerForm';
 
 
 type UpdateCustomerProps = {
@@ -58,7 +59,7 @@ export default function UpdateCustomer({
             value={formData.codeId}
             onChange={(e) => setFormData({ ...formData, codeId: e.target.value })}
             className='my-3'
-            readOnly={mode === 'view'} // Set readOnly based on mode
+            readOnly
           />
             <Label>Customer Name(نام)</Label>
             <Input
@@ -184,8 +185,8 @@ export default function UpdateCustomer({
                   <SelectValue placeholder="Select a Type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Ban">Ban Collar(بان کالر)</SelectItem>
-                  <SelectItem value="Simple">Simple Collar(سادہ کالر)</SelectItem>
+                  <SelectItem value="BanCollar">Ban Collar(بان کالر)</SelectItem>
+                  <SelectItem value="SimpleCollar">Simple Collar(سادہ کالر)</SelectItem>
                 </SelectContent>
               </Select>
           </div>
