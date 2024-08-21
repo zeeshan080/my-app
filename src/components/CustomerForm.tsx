@@ -68,6 +68,8 @@ export default function CustomerForm (props: ICustomerFormProps) {
         }, 600);
  
     }
+
+
   return (
     <div >
         <div className=' flex items-center justify-center mt-8'>
@@ -184,15 +186,15 @@ export default function CustomerForm (props: ICustomerFormProps) {
                     render={({ field }) => (
                         <FormItem>
                         <FormLabel>Hem Type(گھیر کی قسم)</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value} >
+                        <Select key={field.value}  onValueChange={field.onChange} defaultValue={field.value} >
                             <FormControl >
                             <SelectTrigger>
                                 <SelectValue placeholder="Select a Type" />
                             </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                            <SelectItem value="Cilcle">Circle(گول گھیر)</SelectItem>
-                            <SelectItem value="Square">Square(چوراس گھیر)</SelectItem>
+                            <SelectItem  value="circlehem">Circle(گول گھیر)</SelectItem>
+                            <SelectItem  value="squarehem">Square(چوراس گھیر)</SelectItem>
                             </SelectContent>
                         </Select>
                         <FormMessage />
@@ -214,15 +216,15 @@ export default function CustomerForm (props: ICustomerFormProps) {
                     render={({ field }) => (
                         <FormItem>
                         <FormLabel>Collar Type(کالر کی قسم)</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select key={field.value}  onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                             <SelectTrigger>
                                 <SelectValue placeholder="Select a Type" />
                             </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                            <SelectItem value="BanCollar">Ban Collar(بان کالر)</SelectItem>
-                            <SelectItem value="SimpleCollar">Simple Collar(سادہ کالر)</SelectItem>
+                            <SelectItem  value="banCollar">Ban Collar(بان کالر)</SelectItem>
+                            <SelectItem  value="simpleCollar">Simple Collar(سادہ کالر)</SelectItem>
                             </SelectContent>
                         </Select>
                         <FormMessage />

@@ -105,6 +105,7 @@ export default function UpdateCustomer({
           />
            <Label>Hem Type(گھیر کی قسم)</Label>
               <Select
+              key={formData.HemType} 
                 value={formData.HemType}
                 onValueChange={(value) => setFormData({ ...formData, HemType: value })}
                 disabled={mode === 'view'}
@@ -113,8 +114,8 @@ export default function UpdateCustomer({
                   <SelectValue placeholder="Select a Type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Circle">Circle(گول گھیر)</SelectItem>
-                  <SelectItem value="Square">Square(چوراس گھیر)</SelectItem>
+                  <SelectItem  value="circlehem">Circle(گول گھیر)</SelectItem>
+                  <SelectItem  value="squarehem">Square(چوراس گھیر)</SelectItem>
                 </SelectContent>
               </Select>
             <Label>Shirt Side Pocket(قمیض سائیڈ کی جیب)</Label>
@@ -177,6 +178,7 @@ export default function UpdateCustomer({
           />
               <Label>Collar Type(کالر کی قسم)</Label>
               <Select
+                key={formData.CollarType} 
                 value={formData.CollarType}
                 onValueChange={(value) => setFormData({ ...formData, CollarType: value })}
                 disabled={mode === 'view'}
@@ -185,8 +187,8 @@ export default function UpdateCustomer({
                   <SelectValue placeholder="Select a Type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="BanCollar">Ban Collar(بان کالر)</SelectItem>
-                  <SelectItem value="SimpleCollar">Simple Collar(سادہ کالر)</SelectItem>
+                  <SelectItem value="banCollar">Ban Collar(بان کالر)</SelectItem>
+                  <SelectItem value="simpleCollar">Simple Collar(سادہ کالر)</SelectItem>
                 </SelectContent>
               </Select>
           </div>

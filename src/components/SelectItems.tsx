@@ -21,14 +21,18 @@ type Props = {
 // Searchable Select component
 export default function SelectItems({ customers, form }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const filteredCustomers = customers.filter(customer =>
     customer.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const getSelectedCustomerLabel = (value: string) => {
-    const selectedCustomer = customers.find(customer => customer.value === value);
-    return selectedCustomer ? selectedCustomer.label : 'Select a customer';
-  };
+  useEffect(() => {
+    // When the value in the form changes, update the selectedCustomer state
+    const customer = customers.find(cust => cust.value === form.getValues('customerId'));
+    if (customer) {
+      setSelectedCustomer(customer);
+    }
+  }, [form.getValues('customerId'), customers])
  
   return (
     <FormField control={form.control} name='customerId' render={({ field }) => (
@@ -38,16 +42,19 @@ export default function SelectItems({ customers, form }: Props) {
             value={field.value} 
             onValueChange={(value) => {
             console.log('Selected value in SelectItems:', value);
-            const selectedCustomerLabel = getSelectedCustomerLabel(value);
-            console.log(selectedCustomerLabel)
+            const customer = customers.find(cust => cust.value === value);
+            if (customer) {
+              setSelectedCustomer(customer); // Update the state with the selected customer
+            }
+            console.log(selectedCustomer)
             form.setValue('customerId', value, { shouldValidate: true });
             field.onChange(value); 
             field.onBlur(); 
             }}
           >
             <SelectTrigger>
-            <SelectValue>
-            {getSelectedCustomerLabel(field.value)}
+            <SelectValue placeholder="Select a Customer">
+            {selectedCustomer ? selectedCustomer.label : "Select a customer"}
             </SelectValue>
             </SelectTrigger>
             <SelectContent>
