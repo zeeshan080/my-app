@@ -31,6 +31,20 @@ export default function Page(props: IPageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+
+  const fetchUpdatedOrders = async () => {
+    try {
+        const response = await fetch('/api/addOrder'); // Adjust URL as needed
+        if (!response.ok) {
+            throw new Error('Failed to fetch orders');
+        }
+        const data = await response.json();
+        setOrder(data.orders);
+    } catch (error) {
+        console.error('Failed to fetch orders:', error);
+    }
+};
+
   const handleDelete = async (orderId: string) => {
     
     try {
@@ -54,6 +68,7 @@ export default function Page(props: IPageProps) {
   const handleUpdate = async (id: string, orderData: orderFormType) => {
     console.log("updateid----->", id, "orderdata----->", orderData);
     try {
+        // Send PUT request to update the order
         const response = await fetch('/api/addOrder', {
             method: 'PUT',
             headers: {
@@ -66,20 +81,28 @@ export default function Page(props: IPageProps) {
             throw new Error('Failed to update order');
         }
 
+        // Parse the response to get the updated order
         const { order } = await response.json();
         console.log("order------------>", order);
 
+        // Check if the response contains the updated order
         if (order && Array.isArray(order) && order.length > 0) {
-            setOrder(prevData =>
-                prevData.map(item => (item.id === id ? order[0] : item)) 
+            // Update the state with the new order
+            setOrder(prevData => 
+                prevData.map(item => (item.id === id ? order[0] : item))
             );
         } else {
             console.error("No valid order returned in response");
         }
+
+        // Optionally, refetch the data to ensure all related data (like customer names) are updated
+        await fetchUpdatedOrders(); // This function should fetch and set the latest orders
+
     } catch (error) {
         console.error('Failed to update order:', error);
     }
 };
+;
 
   useEffect(() => {
     async function getOrders() {
