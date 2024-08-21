@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import { Poppins } from "next/font/google";
@@ -5,6 +6,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Playball } from "next/font/google";
 import FooterLinks from "../FooterLinks";
 import Image from "next/image";
+import { WEBSITE_NAME } from "@/lib/constants";
 
 
 const play = Playball({
@@ -81,7 +83,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 lg:p-9 border-t-[1px] border-[#c9c1ec]">
-                <div>Copyright © 2022 <b>abc</b></div>
+                <div>Copyright © 2024 <b>{WEBSITE_NAME}</b></div>
             </div>
         </footer>
     );
