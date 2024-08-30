@@ -98,7 +98,7 @@ export type userFormType = z.infer<typeof userSchema>
 export const customerSchema = z.object({
     codeId:z.string().optional(),
     name: z.string(),
-    phoneNumber:z.string(),
+    phoneNumber:z.string().length(11,"Phone number must be exactly 11 digits long"),
     ShirtLength:z.string(),
     Sleeve:z.string(),
     Thigh:z.string(),
