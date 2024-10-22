@@ -38,7 +38,7 @@ export default function UpdateOrder({
   // Reset form data when dialog opens with new data
   useEffect(() => {
     form.reset(initialData);
-  }, [initialData, open]);
+  }, [initialData, open,form]);
   const handleUpdate = async () => {
     let updatedData:ExtendedOrderFormType = form.getValues();
     console.log('Form data before update:', updatedData); // Debugging line

@@ -32,7 +32,7 @@ export default function SelectItems({ customers, form }: Props) {
     if (customer) {
       setSelectedCustomer(customer);
     }
-  }, [form.getValues('customerId'), customers])
+  }, [form.getValues('customerId'), customers,form])
  
   return (
     <FormField control={form.control} name='customerId' render={({ field }) => (
